@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-#include <Windows.h>
 #include "cards.h"
 #include "AI.h"
 #include "player.h"
@@ -22,8 +21,8 @@ void battle(CARD &c,DISPLAY &d,AODSYS &a)
 		if(j1==1)
 		{
 			std::cout<<"The winner is you!!!Congratuation to you!!!"<<std::flush;
-			Sleep(2000);
-			std::system("cls");
+			im::sleep(2000);
+			im::cls();
 			break;
 		}
 		ai_module.decide(player_module,d);
@@ -32,8 +31,8 @@ void battle(CARD &c,DISPLAY &d,AODSYS &a)
 		if(j2==0)
 		{
 			std::cout<<"You lose! Try to be the winner next time!"<<std::flush;
-			Sleep(2000);
-			std::system("cls");
+			im::sleep(2000);
+			im::cls();
 			break;
 		}
 	}
@@ -47,7 +46,10 @@ int main()
     AODSYS aodsys_module(ver);
     CARD card_module(5,"cards.db");
     //card_module.display();
+	#ifdef __WIN64
 	std::system("chcp 65001");
+	#endif
+
     while(1)
     { 
         battle(card_module,display_module,aodsys_module);
@@ -65,13 +67,13 @@ int main()
 		else if(choice==2)
 		{
 			std::cout<<"乱输是不对的哦!"<<std::endl;
-			Sleep(1000);
+			im::sleep(1000);
 			break;
 		}
 		else if(choice==666)
 		{
 			std::cout<<"谢谢夸奖."<<std::endl;
-			Sleep(1000);
+			im::sleep(1000);
 			break;
 		}
 		else

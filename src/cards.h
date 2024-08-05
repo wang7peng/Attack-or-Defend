@@ -8,7 +8,7 @@ class CARD
 	public:
 		friend class AI;
 		friend class PLAYER;
-		CARD(unsigned int amount,char res_path[20]);
+		CARD(unsigned int amount,const char res_path[20]);
 		void search();
 		void display();
 		void reset();

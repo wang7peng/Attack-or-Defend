@@ -6,13 +6,14 @@
 #include <algorithm>
 #include <sstream>
 #include "cards.h"
+#include "display.h"
 
 int CARD::showamount()
 {
 	return this->Camount;
 }
 
-CARD::CARD(unsigned int amount,char res_path[20])
+CARD::CARD(unsigned int amount, const char res_path[20])
 {
 	std::ifstream i;
 	this->Camount=amount;
@@ -42,7 +43,7 @@ void CARD::reset()
 
 void CARD::display()
 {
-	std::system("cls");
+	im::cls();
 	std::cout<<"****************THE DATA OF THE CARDS****************"<<std::endl;
 	for(int m=1;m<=this->Camount;m++)
 	{

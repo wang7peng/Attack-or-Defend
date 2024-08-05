@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <Windows.h>
 #include "player.h"
 #include "AI.h"
 
@@ -8,12 +7,12 @@ void PLAYER::damage_display(std::string attacker,std::string is_attacked,int dam
 {
 	std::cout<<std::endl;
 	std::cout<<attacker<<"给"<<is_attacked<<"造成了"<<damage<<"点伤害"<<std::endl;
-	Sleep(1500);
+	im::sleep(1500);
 }
 
 void PLAYER::selectcard(CARD &c)
 {
-	std::system("cls");
+	im::cls();
 	std::string nulldata("0");
 	this->Pdata.push_back(nulldata);
 	std::vector<int> selected;
@@ -94,7 +93,7 @@ void PLAYER::operate(AI &a,DISPLAY &d)
 		std::string new_hp1("0");
 		a.Adata[index_e*3]=new_hp1;
 		std::cout<<attacker<<"击败了"<<is_attacked<<std::endl; 
-		Sleep(1000);
+		im::sleep(1000);
 	}
 	else if(hp>=damage)
 	{

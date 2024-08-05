@@ -1,24 +1,47 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <Windows.h>
+
 #include "display.h"
 #include "AI.h"
+
+void im::sleep(int s)
+{
+  	#ifdef _WIN64
+		Sleep(s);
+	#elif __linux__
+	    usleep(100 * s);
+	#else
+		// exit(1);
+	#endif
+}
+
+void im::cls()
+{
+	#ifdef _WIN64
+		std::system("cls");
+	#elif __linux__
+	    std::system("clear");
+	#else
+		// exit(1);
+	#endif
+
+}
 
 void DISPLAY::logo()
 {
 	std::cout<<"               "<<"----------Attack or Defend I [Console 32bit]----------"<<std::endl;
-	Sleep(1000);
+	im::sleep(1000);
 	std::cout<<"                    "<<"-------------By Zhou Leyi-------------"<<std::endl;
-	Sleep(1000);
+	im::sleep(1000);
 	std::cout<<"                        "<<">>>>>>>>>"<<this->version<<"<<<<<<<<"<<std::endl;
-	Sleep(1500);
-	std::system("cls");
+	im::sleep(1500);
+	im::cls();
 }
 
 void DISPLAY::draw(AI &a,PLAYER &p)
 {
-	std::system("cls");
+	im::cls();
 	std::cout<<"********************************************************"<<std::endl;
 	std::cout<<"我方"<<"                         "<<"敌方"<<std::endl;
 	for(int n=1;n<=a.Aamount;n++)

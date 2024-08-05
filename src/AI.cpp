@@ -3,14 +3,15 @@
 #include <random>
 #include <vector>
 #include <algorithm>
-#include <Windows.h>
+#include "display.h"
+
 #include "AI.h"
 
 void AI::damage_display(std::string attacker,std::string is_attacked,int damage)
 {
 	std::cout<<std::endl;
 	std::cout<<attacker<<"给"<<is_attacked<<"造成了"<<damage<<"点伤害"<<std::endl;
-	Sleep(1500);
+	im::sleep(1500);
 }
 
 AI::AI(unsigned int amount,CARD &c)
@@ -83,7 +84,7 @@ void AI::attack(PLAYER &p,DISPLAY &d)
 		std::string new_hp1("0");
 		p.Pdata[3*result2]=new_hp1;
 		std::cout<<attacker<<"击败了"<<is_attacked<<std::endl; 
-		Sleep(1000);
+	    im::sleep(1000);
 	}
 	
 	else if(hp>=damage)
